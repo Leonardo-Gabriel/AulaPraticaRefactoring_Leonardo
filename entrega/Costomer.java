@@ -27,45 +27,41 @@ public class Customer {
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
 
-            // AGORA: thisAmount é calculado através do método extraído
             double thisAmount = amountFor(each);
 
-            // soma pontos
             frequentRenterPoints++;
             if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
                     each.getDaysRented() > 1)
                 frequentRenterPoints++;
 
-            // adiciona linha ao resultado
             result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
             totalAmount += thisAmount;
         }
 
-        // adiciona rodapé
         result += "Amount owed is " + totalAmount + "\n";
         result += "You earned " + frequentRenterPoints + " frequent renter points";
         return result;
     }
 
-    // MÉTODO EXTRAÍDO DO SWITCH
-    private double amountFor(Rental each) {
+    // MÉTODO RENOMEADO → AGORA O PARÂMETRO É aRental
+    private double amountFor(Rental aRental) {
         double thisAmount = 0;
 
-        switch (each.getMovie().getPriceCode()) {
+        switch (aRental.getMovie().getPriceCode()) {
             case Movie.REGULAR:
                 thisAmount += 2;
-                if (each.getDaysRented() > 2)
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
+                if (aRental.getDaysRented() > 2)
+                    thisAmount += (aRental.getDaysRented() - 2) * 1.5;
                 break;
 
             case Movie.NEW_RELEASE:
-                thisAmount += each.getDaysRented() * 3;
+                thisAmount += aRental.getDaysRented() * 3;
                 break;
 
             case Movie.CHILDRENS:
                 thisAmount += 1.5;
-                if (each.getDaysRented() > 3)
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
+                if (aRental.getDaysRented() > 3)
+                    thisAmount += (aRental.getDaysRented() - 3) * 1.5;
                 break;
         }
 
