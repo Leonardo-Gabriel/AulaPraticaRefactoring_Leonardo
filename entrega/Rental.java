@@ -38,4 +38,13 @@ public class Rental {
 
         return result;
     }
+
+    // NOVO MÉTODO EXTRAÍDO PARA O REFACTORING 5
+    public int getFrequentRenterPoints() {
+        // bônus se for lançamento novo e alugado por mais de 1 dia
+        if ((_movie.getPriceCode() == Movie.NEW_RELEASE) && _daysRented > 1) {
+            return 2;
+        }
+        return 1;
+    }
 }
