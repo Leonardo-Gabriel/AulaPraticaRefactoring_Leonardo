@@ -44,7 +44,7 @@ public class Movie {
     }
 
     public int getFrequentRenterPoints(int daysRented) {
-        // Também será refinado no passo de polimorfismo
-        return 1; // placeholder — substitua pela lógica extraída
+        return _price.getFrequentRenterPoints(daysRented);
     }
+
 }
