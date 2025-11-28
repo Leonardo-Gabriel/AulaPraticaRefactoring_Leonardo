@@ -28,12 +28,11 @@ public class Customer {
         return new HtmlStatement().value(this);
     }
 
-    // Agora public – usado por TextStatement e HtmlStatement
+    // Agora métodos públicos para uso nos Statements
     public Enumeration getRentals() {
         return _rentals.elements();
     }
 
-    // Agora public – usado por TextStatement e HtmlStatement
     public double getTotalCharge() {
         double result = 0;
 
@@ -46,7 +45,6 @@ public class Customer {
         return result;
     }
 
-    // Agora public – usado por TextStatement e HtmlStatement
     public int getTotalFrequentRenterPoints() {
         int result = 0;
 
